@@ -4,6 +4,10 @@ import theme from '../theme';
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from './components/Navbar/Navbar';
+import Footer from './components/footer/Footer';
+import { Toaster } from 'react-hot-toast';
+import ReduxProvider from '@/lib/ReduxProvider';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,8 +34,13 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
+            <ReduxProvider> 
 
+        <Navbar />
         {children}
+        <Toaster/>
+        <Footer />
+            </ReduxProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
